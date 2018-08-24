@@ -58,32 +58,55 @@ function updateCounter() {
   var cartTotal = 0;
   cart.items = JSON.parse(localStorage.getItem('cart'));
   for (var i in cart.items) {
-
     cartTotal += parseInt(cart.items[i].quantity);
   }
   cartEl.textContent = ` (${cartTotal})`;
 }
 
-// TODO: As you add items into the cart, show them (item & quantity) in the cart preview div
+// todo: As you add items into the cart, show them (item & quantity) in the cart preview div
 function updateCartPreview() {
-  // TODO: Get the item and quantity from the form
+  // todo: Get the item and quantity from the form
   var selectItem = event.target.items.value;
   var selectAmount = event.target.quantity.value;
 
   console.log(`display this: ${selectItem}, ${selectAmount}`);
 
-  // TODO: Add a new element to the cartContents div with that information
+  // todo: Add a new element to the cartContents div with that information
   var divEl = document.getElementById('cartContents');
-  var ulEl = document.createElement('ul');
-  var liEl = document.createElement('li');
+  var tableEl = document.getElementById('cartTable');
+  var trEl = document.createElement('tr');
+  var thEl = document.createElement('th');
+  var tdEl = document.createElement('td');
 
-  liEl.textContent = `Item: ${selectItem} - Quanity: ${selectAmount}`;
-  ulEl.appendChild(liEl);
-  divEl.appendChild(ulEl);
-
-
-
-
+  if (document.getElementById('cartTable')) {
+    trEl = document.createElement('tr');
+    tdEl.textContent = 'IMG';
+    trEl.appendChild(tdEl);
+    trEl = document.createElement('tr');
+    tdEl.textContent = selectItem;
+    trEl.appendChild(tdEl);
+    tdEl = document.createElement('td');
+    tdEl.textContent = selectAmount;
+    trEl.appendChild(tdEl);
+    tableEl.appendChild(trEl);
+    divEl.appendChild(tableEl);
+  } else {
+    var newtableEl = document.createElement('table');
+    newtableEl.id = 'cartTable';
+    trEl = document.createElement('tr');
+    thEl = document.createElement('th');
+    tdEl = document.createElement('td');
+    thEl.textContent = "PICTURE";
+    trEl.appendChild(thEl);
+    thEl = document.createElement('th');
+    thEl.textContent = 'ITEM'
+    trEl.appendChild(thEl);
+    thEl = document.createElement('th');
+    thEl.textContent = 'QTY';
+    trEl.appendChild(thEl);
+    newtableEl.appendChild(trEl);
+    divEl.appendChild(newtableEl);
+  }
 }
 
 // Set up the "submit" event listener on the form.
