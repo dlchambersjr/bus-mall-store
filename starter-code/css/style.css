@@ -1,5 +1,46 @@
 /* TODO: Make it awesome */
 
+html {
+  background-color: navy;
+}
+
+body {
+  width: 900px;
+  background-color: white;
+ margin: 0px auto;
+
+}
+
+header {
+  background-color: lightsalmon;
+  margin: 50px 0px;
+  height: 50px;
+  
+}
+
+header h1 {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 30px;
+  font-weight: bold;
+  float: left;
+  margin-left: 25px
+}
+
+header li {
+  display: inline-block;
+  margin-left: 25px;
+  background-color: lightblue;
+  border: 1px solid black;
+  padding: 10px;
+}
+
+div li {
+  display: block;
+  padding: 25px;
+}
+
+
+
 th, td {
   padding:10px;
   margin:5px;
