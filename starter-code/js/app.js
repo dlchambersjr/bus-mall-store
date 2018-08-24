@@ -7,12 +7,19 @@ var Cart = function (items) {
 };
 
 Cart.prototype.addItem = function (product, quantity) {
+  if (localStorage.getItem('cart') === null) {
+    this.items.push(new CartItem(product, quantity));
+  } else {
+    this.items = JSON.parse(localStorage.getItem('cart'));
+    this.items.push(new CartItem(product, quantity));
+  }
   // TODO: Fill in this instance method to create a new CartItem and add it to this.items
 };
 
 Cart.prototype.saveToLocalStorage = function () {
-  // TODO: Fill in this instance method to save the contents of the cart to localStorage
+  localStorage.setItem('cart', JSON.stringify(this.items));
 };
+// TODO: Fill in this instance method to save the contents of the cart to localStorage
 
 Cart.prototype.removeItem = function (item) {
   // TODO: Fill in this instance method to remove one item from the cart.
